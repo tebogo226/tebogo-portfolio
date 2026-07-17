@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tebogo Lekalakala — BSc IT | Full Stack &amp; Emerging Tech</title>
+<meta name="description" content="Portfolio of Tebogo Lekalakala — BSc Information Technology, Richfield. Full stack development, AI/ML, cybersecurity.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0b1220;
+    --ink-2:#111a2e;
+    --ink-3:#0e1626;
+    --paper:#edeae3;
+    --muted:#8b93a7;
+    --signal:#4a9eff;
+    --amber:#4a9eff;
+    --line: rgba(237,234,227,0.12);
+    --line-strong: rgba(237,234,227,0.22);
+    --max: 1080px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(1100px 600px at 85% -10%, rgba(74,158,255,0.08), transparent 60%),
+      radial-gradient(900px 500px at -10% 20%, rgba(74,158,255,0.06), transparent 55%),
+      var(--ink);
+    color:var(--paper);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{ background:var(--signal); color:var(--ink); }
+  a{ color:inherit; text-decoration:none; }
+  .wrap{ max-width:var(--max); margin:0 auto; padding:0 28px; }
+  .mono{ font-family:'JetBrains Mono', monospace; }
+  .display{ font-family:'Fraunces', serif; }
+
+  /* subtle grid texture overlay */
+  .grid-texture{
+    position:fixed; inset:0; pointer-events:none; z-index:0; opacity:0.35;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 64px 64px;
+    -webkit-mask-image: radial-gradient(700px 400px at 80% 0%, black, transparent 70%);
+            mask-image: radial-gradient(700px 400px at 80% 0%, black, transparent 70%);
+  }
+
+  /* NAV */
+  header{
+    position:sticky; top:0; z-index:50;
+    backdrop-filter: blur(10px);
+    background: rgba(11,18,32,0.75);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{ display:flex; align-items:center; justify-content:space-between; height:72px; }
+  .brand{ font-family:'JetBrains Mono', monospace; font-size:14px; letter-spacing:0.02em; color:var(--paper); display:flex; align-items:center; gap:8px;}
+  .brand .dot{ width:7px; height:7px; border-radius:50%; background:var(--signal); box-shadow:0 0 10px var(--signal); display:inline-block;}
+  .navlinks{ display:flex; gap:2px; align-items:center; }
+  .navlinks a{
+    font-family:'JetBrains Mono', monospace; font-size:13px; color:var(--muted);
+    padding:8px 14px; border-radius:20px; transition:all .2s ease;
+  }
+  .navlinks a:hover, .navlinks a.active{ color:var(--ink); background:var(--signal); }
+  .navlinks a::before{ content:"/ "; opacity:0.5; }
+  .menu-btn{ display:none; background:none; border:1px solid var(--line-strong); color:var(--paper); width:40px; height:40px; border-radius:8px; font-size:18px; cursor:pointer; }
+
+  @media (max-width: 760px){
+    .navlinks{
+      position:fixed; top:72px; left:0; right:0; flex-direction:column; align-items:stretch;
+      background:var(--ink-2); border-bottom:1px solid var(--line); padding:12px;
+      transform: translateY(-130%); transition: transform .25s ease; gap:4px;
+    }
+    .navlinks.open{ transform: translateY(0); }
+    .navlinks a{ padding:12px 16px; border-radius:8px; }
+    .menu-btn{ display:block; }
+  }
+
+  section{ position:relative; z-index:1; padding:96px 0; border-bottom:1px solid var(--line); }
+  section:last-of-type{ border-bottom:none; }
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--signal); margin-bottom:18px; display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{ content:"//"; color:var(--amber); }
+
+  /* HERO */
+  .hero{ padding-top:72px; padding-bottom:100px; }
+  .hero-grid{ display:grid; grid-template-columns: 1.15fr 0.85fr; gap:56px; align-items:center; }
+  .hero h1{
+    font-size:clamp(38px, 5.6vw, 64px); line-height:1.04; font-weight:900; letter-spacing:-0.01em;
+    margin-bottom:22px;
+  }
+  .hero h1 .accent{ color:var(--signal); font-style:italic; font-weight:500; }
+  .hero p.lede{ color:var(--muted); font-size:17px; max-width:46ch; margin-bottom:34px; }
+  .cta-row{ display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{
+    font-family:'JetBrains Mono', monospace; font-size:13px; padding:14px 24px; border-radius:6px;
+    display:inline-flex; align-items:center; gap:8px; cursor:pointer; border:1px solid transparent;
+    transition: transform .18s ease, background .18s ease;
+  }
+  .btn:hover{ transform: translateY(-2px); }
+  .btn-solid{ background:var(--signal); color:var(--ink); font-weight:700; }
+  .btn-outline{ border-color:var(--line-strong); color:var(--paper); }
+  .btn-outline:hover{ border-color:var(--signal); color:var(--signal); }
+
+  /* record card - signature element */
+  .record-card{
+    background: linear-gradient(160deg, var(--ink-2), var(--ink-3));
+    border:1px solid var(--line-strong); border-radius:14px; padding:28px;
+    position:relative; box-shadow: 0 30px 60px -20px rgba(0,0,0,0.6);
+  }
+  .record-card::before{
+    content:"AUTHENTICATED RECORD"; position:absolute; top:-11px; left:24px;
+    background:var(--amber); color:var(--ink); font-family:'JetBrains Mono',monospace;
+    font-size:10px; letter-spacing:0.08em; padding:4px 10px; border-radius:4px; font-weight:700;
+  }
+  .record-row{ display:flex; justify-content:space-between; padding:11px 0; border-bottom:1px dashed var(--line); font-family:'JetBrains Mono', monospace; font-size:12.5px; }
+  .record-row:last-child{ border-bottom:none; }
+  .record-row .k{ color:var(--muted); }
+  .record-row .v{ color:var(--paper); text-align:right; }
+  .record-mark{ margin-top:18px; padding-top:18px; border-top:1px solid var(--line-strong); display:flex; justify-content:space-between; align-items:baseline; }
+  .record-mark .num{ font-family:'Fraunces', serif; font-size:38px; font-weight:900; color:var(--signal); }
+  .record-mark .lbl{ font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; }
+
+  @media (max-width: 860px){ .hero-grid{ grid-template-columns:1fr; } }
+
+  /* ABOUT */
+  .about-grid{ display:grid; grid-template-columns: 1.2fr 1fr; gap:56px; }
+  .about h2{ font-size:clamp(28px,3.6vw,40px); font-weight:900; margin-bottom:20px; }
+  .about p{ color:var(--muted); margin-bottom:16px; max-width:56ch; }
+  .stat-cards{ display:grid; grid-template-columns:1fr 1fr; gap:14px; align-content:start; }
+  .stat-card{ background:var(--ink-2); border:1px solid var(--line); border-radius:10px; padding:20px; }
+  .stat-card .n{ font-family:'Fraunces', serif; font-size:28px; font-weight:900; color:var(--amber); }
+  .stat-card .l{ font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em; margin-top:4px; }
+  @media (max-width: 860px){ .about-grid{ grid-template-columns:1fr; } }
+
+  /* SKILLS - module grid */
+  .module-grid{ display:grid; grid-template-columns: repeat(2, 1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+  .module{ background:var(--ink-2); padding:24px 26px; }
+  .module-top{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:10px; }
+  .module-code{ font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--signal); letter-spacing:0.05em; }
+  .module-name{ font-family:'Fraunces', serif; font-size:19px; font-weight:600; margin:6px 0 14px; }
+  .bar-track{ height:6px; border-radius:4px; background:rgba(237,234,227,0.08); overflow:hidden; }
+  .bar-fill{ height:100%; background: linear-gradient(90deg, var(--signal), var(--amber)); border-radius:4px; }
+  .module-score{ font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--muted); margin-top:8px; display:block; }
+  @media (max-width: 700px){ .module-grid{ grid-template-columns:1fr; } }
+
+  /* CERTIFICATES */
+  .cert-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  .cert-card{ background:var(--ink-2); border:1px solid var(--line); border-radius:12px; padding:26px; position:relative; }
+  .cert-card .cert-tag{ font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--amber); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:10px; }
+  .cert-card h3{ font-family:'Fraunces', serif; font-size:21px; font-weight:600; margin-bottom:10px; }
+  .cert-card p{ color:var(--muted); font-size:14px; margin-bottom:14px; }
+  .cert-meta{ display:flex; justify-content:space-between; font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--muted); border-top:1px solid var(--line); padding-top:12px; }
+  @media (max-width: 700px){ .cert-grid{ grid-template-columns:1fr; } }
+
+  /* PROJECTS */
+  .proj-note{ background:rgba(74,158,255,0.08); border:1px solid rgba(74,158,255,0.3); border-radius:10px; padding:14px 18px; font-size:13.5px; color:var(--signal); margin-bottom:32px; font-family:'JetBrains Mono', monospace; }
+  .proj-grid{ display:grid; grid-template-columns: repeat(2, 1fr); gap:20px; }
+  .proj-card{ background:var(--ink-2); border:1px solid var(--line); border-radius:12px; padding:26px; transition: border-color .2s ease, transform .2s ease; }
+  .proj-card:hover{ border-color:var(--line-strong); transform: translateY(-3px); }
+  .proj-idx{ font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--signal); margin-bottom:10px; }
+  .proj-card h3{ font-family:'Fraunces', serif; font-size:20px; font-weight:600; margin-bottom:10px; }
+  .proj-card p{ color:var(--muted); font-size:14px; margin-bottom:16px; }
+  .proj-tags{ display:flex; gap:8px; flex-wrap:wrap; }
+  .tag{ font-family:'JetBrains Mono', monospace; font-size:10.5px; color:var(--muted); border:1px solid var(--line-strong); padding:4px 9px; border-radius:20px; }
+  @media (max-width: 700px){ .proj-grid{ grid-template-columns:1fr; } }
+
+  /* CONTACT */
+  .contact-inner{ display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:32px; }
+  .contact h2{ font-size:clamp(32px,5vw,54px); font-weight:900; max-width:14ch; line-height:1.05; }
+  .contact-links{ display:flex; flex-direction:column; gap:10px; }
+  .contact-links a{ font-family:'JetBrains Mono', monospace; font-size:14px; color:var(--muted); display:flex; align-items:center; gap:8px; transition:color .2s ease; }
+  .contact-links a:hover{ color:var(--signal); }
+
+  footer{ padding:32px 0; }
+  .footer-inner{ display:flex; justify-content:space-between; font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--muted); flex-wrap:wrap; gap:10px; }
+
+  .reveal{ opacity:0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+</style>
+</head>
+<body>
+<div class="grid-texture"></div>
+
+<header>
+  <nav class="wrap">
+    <div class="brand"><span class="dot"></span>TEBOGO.LEKALAKALA</div>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">☰</button>
+    <div class="navlinks" id="navLinks">
+      <a href="#home">home</a>
+      <a href="#about">about</a>
+      <a href="#skills">skills</a>
+      <a href="#certificates">certificates</a>
+      <a href="#projects">projects</a>
+      <a href="#contact">contact</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">BSc information technology · richfield</div>
+        <h1 class="display">Building intelligent<br><span class="accent">systems</span>, one module<br>at a time.</h1>
+        <p class="lede">I'm Tebogo Lekalakala — a final-year BSc IT student working across full stack development, machine learning, and cybersecurity. I like taking a system apart until I understand every layer, then building it back up cleaner.</p>
+        <div class="cta-row">
+          <a href="#projects" class="btn btn-solid">View projects →</a>
+          <a href="#contact" class="btn btn-outline">Get in touch</a>
+        </div>
+      </div>
+      <div class="record-card reveal">
+        <div class="record-row"><span class="k">STUDENT</span><span class="v">Lekalakala, Tebogo</span></div>
+        <div class="record-row"><span class="k">PROGRAMME</span><span class="v">BSc Information Technology</span></div>
+        <div class="record-row"><span class="k">NQF LEVEL</span><span class="v">7</span></div>
+        <div class="record-row"><span class="k">CAMPUS</span><span class="v">Polokwane</span></div>
+        <div class="record-row"><span class="k">STATUS</span><span class="v" style="color:var(--signal)">FINAL YEAR · 2025</span></div>
+        <div class="record-mark">
+          <div>
+            <div class="num">69.25</div>
+            <div class="lbl">latest semester avg</div>
+          </div>
+          <div style="text-align:right">
+            <div class="num" style="font-size:22px; color:var(--amber);">765+</div>
+            <div class="lbl">credits earned</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap about-grid">
+      <div class="about reveal">
+        <div class="eyebrow">about</div>
+        <h2 class="display">Grounded in coursework,<br>built for production.</h2>
+        <p>I'm currently completing a BSc in Information Technology at Richfield Graduate Institute (Polokwane campus), covering everything from networks and databases to AI, cloud computing, and autonomous systems.</p>
+        <p>Alongside my degree I've pursued industry certification through the FNB App Academy (full stack development) and Fortinet's Training Institute (cybersecurity fundamentals) — because coursework theory means more once you've shipped something with it.</p>
+        <p>Right now I'm most interested in the overlap between machine learning and secure systems design: models that work, and are built to not fall over.</p>
+      </div>
+      <div class="stat-cards reveal">
+        <div class="stat-card"><div class="n">67.45</div><div class="l">2023 overall mark</div></div>
+        <div class="stat-card"><div class="n">66.00</div><div class="l">2024 overall mark</div></div>
+        <div class="stat-card"><div class="n">69.25</div><div class="l">2025 overall mark</div></div>
+        <div class="stat-card"><div class="n">2</div><div class="l">industry certifications</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="eyebrow">skills — sourced from transcript results</div>
+      <h2 class="display" style="font-size:clamp(28px,3.6vw,40px); font-weight:900; margin-bottom:36px;">What I've actually studied and scored on.</h2>
+      <div class="module-grid">
+        <div class="module reveal">
+          <div class="module-top"><span class="module-code mono">PROG 731/732</span></div>
+          <div class="module-name">Programming</div>
+          <div class="bar-track"><div class="bar-fill" style="width:77%"></div></div>
+          <span class="module-score">77% · final-year programming module</span>
+        </div>
+        <div class="module reveal">
+          <div class="module-top"><span class="module-code mono">SE 700</span></div>
+          <div class="module-name">Software Engineering</div>
+          <div class="bar-track"><div class="bar-fill" style="width:75%"></div></div>
+          <span class="module-score">75% · SDLC, architecture &amp; design</span>
+        </div>
+        <div class="module reveal">
+          <div class="module-top"><span class="module-code mono">AI 700</span></div>
+          <div class="module-name">Artificial Intelligence</div>
+          <div class="bar-track"><div class="bar-fill" style="width:72%"></div></div>
+          <span class="module-score">72% · applied AI foundations</span>
+        </div>
+        <div class="module reveal">
+          <div class="module-top"><span class="module-code mono">DMV 600</span></div>
+          <div class="module-name">Data Manipulation &amp; Visualisation</div>
+          <div class="bar-track"><div class="bar-fill" style="width:70%"></div></div>
+          <span class="module-score">70% · data wrangling &amp; analysis</span>
+        </div>
+        <div class="module reveal">
+          <div class="module-top"><span class="module-code mono">DB 600</span></div>
+          <div class="module-name">Database Systems</div>
+          <div class="bar-track"><div class="bar-fill" style="width:68%"></div></div>
+          <span class="module-score">68% · relational database design</span>
+        </div>
+        <div class="module reveal">
+          <div class="module-top"><span class="module-code mono">HCI 700</span></div>
+          <div class="module-name">Human Computer Interaction</div>
+          <div class="bar-track"><div class="bar-fill" style="width:67%"></div></div>
+          <span class="module-score">67% · UX &amp; interaction design</span>
+        </div>
+        <div class="module reveal">
+          <div class="module-top"><span class="module-code mono">CC 600</span></div>
+          <div class="module-name">Cloud Computing</div>
+          <div class="bar-track"><div class="bar-fill" style="width:63%"></div></div>
+          <span class="module-score">63% · cloud infrastructure</span>
+        </div>
+        <div class="module reveal">
+          <div class="module-top"><span class="module-code mono">MAD 700</span></div>
+          <div class="module-name">Mobile App Development</div>
+          <div class="bar-track"><div class="bar-fill" style="width:64%"></div></div>
+          <span class="module-score">64% · native &amp; cross-platform apps</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATES -->
+  <section id="certificates">
+    <div class="wrap">
+      <div class="eyebrow">certifications</div>
+      <h2 class="display" style="font-size:clamp(28px,3.6vw,40px); font-weight:900; margin-bottom:36px;">Beyond the classroom.</h2>
+      <div class="cert-grid">
+        <div class="cert-card reveal">
+          <div class="cert-tag">FNB App Academy · IT Varsity</div>
+          <h3>Certificate in Full Stack Development</h3>
+          <p>32 credits covering the SDLC, GitHub &amp; collaboration workflows, UX design principles, API integration, backend development, and user-centric app design.</p>
+          <div class="cert-meta"><span>ISSUED 23 JUL 2025</span><span>CERT# AOTYAA072025</span></div>
+        </div>
+        <div class="cert-card reveal">
+          <div class="cert-tag">Fortinet Training Institute</div>
+          <h3>Technical Introduction to Cybersecurity 3.0</h3>
+          <p>Foundational cybersecurity training covering core security principles, threat landscapes, and defensive fundamentals from Fortinet's official training programme.</p>
+          <div class="cert-meta"><span>ISSUED 20 MAR 2026</span><span>FORTINET NSE TRAINING</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="eyebrow">projects</div>
+      <h2 class="display" style="font-size:clamp(28px,3.6vw,40px); font-weight:900; margin-bottom:20px;">Coursework &amp; capstone work.</h2>
+      <div class="proj-grid">
+        <div class="proj-card reveal">
+          <div class="proj-idx mono">BANKING SYSTEM</div>
+          <h3>Standard Bank — Multi-Branch Banking Management System</h3>
+          <p>Comprehensive console-based banking system built in C++. Features multiple account types (Savings, Cheque, Fixed Deposit, Student), teller & customer portals, binary file persistence, PIN hashing, transaction logging, interest calculation, and detailed validation rules.</p>
+          <div class="proj-tags">
+            <span class="tag">C++</span>
+            <span class="tag">OOP</span>
+            <span class="tag">File I/O</span>
+            <span class="tag">Console App</span>
+            <a href="https://github.com/tebogo226/Banking-System-project" target="_blank" rel="noopener" class="tag" style="color:var(--signal); border-color:var(--signal);">View Repo →</a>
+          </div>
+        </div>
+        <div class="proj-card reveal">
+          <div class="proj-idx mono">E-COMMERCE</div>
+          <h3>Easy Buy — Book E-commerce Platform</h3>
+          <p>Full PHP/MySQL e-commerce website for buying, selling, borrowing, and returning books. Includes user authentication, shopping functionality, and a complete admin portal for managing users, books, and site activities.</p>
+          <div class="proj-tags">
+            <span class="tag">PHP</span>
+            <span class="tag">HTML</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">Full Stack</span>
+            <a href="https://github.com/tebogo226/my-first-project" target="_blank" rel="noopener" class="tag" style="color:var(--signal); border-color:var(--signal);">View Repo →</a>
+          </div>
+        </div>
+        <div class="proj-card reveal">
+          <div class="proj-idx mono">PERSONAL PROJECT</div>
+          <h3>Ledger — Secure Bookkeeping App</h3>
+          <p>A ledger application with a Node.js/Express backend. Authentication is handled via JWT tokens (8-hour expiry) with bcrypt password hashing — built to keep financial records access properly gated.</p>
+          <div class="proj-tags"><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">JWT</span><span class="tag">bcrypt</span><span class="tag">add repo link</span></div>
+        </div>
+        <div class="proj-card reveal">
+          <div class="proj-idx mono">MOBILE APP DEV 700</div>
+          <h3>Ledger — Mobile Expense Tracker</h3>
+          <p>React Native (Expo) companion app to the Ledger backend. JWT auth, offline-first expense logging via AsyncStorage, and a dashboard with spend-by-category breakdown — with a demo mode so it runs fully standalone.</p>
+          <div class="proj-tags"><span class="tag">React Native</span><span class="tag">Expo</span><span class="tag">JWT</span><span class="tag">AsyncStorage</span><span class="tag">add repo link</span></div>
+        </div>
+        <div class="proj-card reveal">
+          <div class="proj-idx mono">SOFTWARE ENGINEERING 700</div>
+          <h3>Ledger — Backend API</h3>
+          <p>Layered REST API (routes → controllers → services → repositories) built on top of the original JWT auth module. 10 passing Jest/Supertest tests covering auth and expense logic, plus documented architecture decisions.</p>
+          <div class="proj-tags"><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">Jest</span><span class="tag">Layered Architecture</span><span class="tag">add repo link</span></div>
+        </div>
+        <div class="proj-card reveal">
+          <div class="proj-idx mono">AUTONOMOUS SYSTEMS 700</div>
+          <h3>Autonomous Systems &amp; Robotics</h3>
+          <p>Detail the autonomous system or robotics project you worked on — sensors, logic, and results.</p>
+          <div class="proj-tags"><span class="tag">add repo link</span><span class="tag">add stack</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <div class="wrap contact-inner">
+      <h2 class="display reveal">Let's build<br>something together.</h2>
+      <div class="contact-links reveal">
+        <a href="https://github.com/tebogo226" target="_blank" rel="noopener">→ github.com/tebogo226</a>
+        <a href="mailto:youremail@example.com">→ lekalakalatebogo72@gmail.com</a>
+        <a href="https://linkedin.com/in/your-linkedin" target="_blank" rel="noopener">→ linkedin.com/in/lekalakalatebogo</a>
+        <a href="tel:+27612345678">→ 074 624 2779</a>
+        <a href="tel:+27821234567">→ 073 252 5494</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>© 2026 Tebogo Lekalakala</span>
+    <span>BSc IT · Richfield Graduate Institute · Polokwane</span>
+  </div>
+</footer>
+
+<script>
+  // mobile menu
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // active nav link on scroll
+  const sections = document.querySelectorAll('main section[id]');
+  const navA = document.querySelectorAll('.navlinks a');
+  const setActive = () => {
+    let current = '';
+    sections.forEach(sec => {
+      const rect = sec.getBoundingClientRect();
+      if (rect.top <= 100 && rect.bottom >= 100) current = sec.id;
+    });
+    navA.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+  };
+  window.addEventListener('scroll', setActive);
+  setActive();
+
+  // reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
