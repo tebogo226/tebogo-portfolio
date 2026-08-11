@@ -15,8 +15,8 @@
     --ink-3:#0e1626;
     --paper:#edeae3;
     --muted:#8b93a7;
-    --signal:#4a9eff;
-    --amber:#4a9eff;
+    --signal:#6fe7c8;
+    --amber:#e8a33d;
     --line: rgba(237,234,227,0.12);
     --line-strong: rgba(237,234,227,0.22);
     --max: 1080px;
@@ -25,8 +25,8 @@
   html{scroll-behavior:smooth;}
   body{
     background:
-      radial-gradient(1100px 600px at 85% -10%, rgba(74,158,255,0.08), transparent 60%),
-      radial-gradient(900px 500px at -10% 20%, rgba(74,158,255,0.06), transparent 55%),
+      radial-gradient(1100px 600px at 85% -10%, rgba(111,231,200,0.08), transparent 60%),
+      radial-gradient(900px 500px at -10% 20%, rgba(232,163,61,0.06), transparent 55%),
       var(--ink);
     color:var(--paper);
     font-family:'Inter', sans-serif;
@@ -160,7 +160,7 @@
   @media (max-width: 700px){ .cert-grid{ grid-template-columns:1fr; } }
 
   /* PROJECTS */
-  .proj-note{ background:rgba(74,158,255,0.08); border:1px solid rgba(74,158,255,0.3); border-radius:10px; padding:14px 18px; font-size:13.5px; color:var(--signal); margin-bottom:32px; font-family:'JetBrains Mono', monospace; }
+  .proj-note{ background:rgba(232,163,61,0.08); border:1px solid rgba(232,163,61,0.3); border-radius:10px; padding:14px 18px; font-size:13.5px; color:var(--amber); margin-bottom:32px; font-family:'JetBrains Mono', monospace; }
   .proj-grid{ display:grid; grid-template-columns: repeat(2, 1fr); gap:20px; }
   .proj-card{ background:var(--ink-2); border:1px solid var(--line); border-radius:12px; padding:26px; transition: border-color .2s ease, transform .2s ease; }
   .proj-card:hover{ border-color:var(--line-strong); transform: translateY(-3px); }
@@ -341,29 +341,11 @@
       <div class="eyebrow">projects</div>
       <h2 class="display" style="font-size:clamp(28px,3.6vw,40px); font-weight:900; margin-bottom:20px;">Coursework &amp; capstone work.</h2>
       <div class="proj-grid">
-        <div class="proj-card reveal">
-          <div class="proj-idx mono">BANKING SYSTEM</div>
-          <h3>Standard Bank — Multi-Branch Banking Management System</h3>
-          <p>Comprehensive console-based banking system built in C++. Features multiple account types (Savings, Cheque, Fixed Deposit, Student), teller & customer portals, binary file persistence, PIN hashing, transaction logging, interest calculation, and detailed validation rules.</p>
-          <div class="proj-tags">
-            <span class="tag">C++</span>
-            <span class="tag">OOP</span>
-            <span class="tag">File I/O</span>
-            <span class="tag">Console App</span>
-            <a href="https://github.com/tebogo226/Banking-System-project" target="_blank" rel="noopener" class="tag" style="color:var(--signal); border-color:var(--signal);">View Repo →</a>
-          </div>
-        </div>
-        <div class="proj-card reveal">
-          <div class="proj-idx mono">E-COMMERCE</div>
-          <h3>Easy Buy — Book E-commerce Platform</h3>
-          <p>Full PHP/MySQL e-commerce website for buying, selling, borrowing, and returning books. Includes user authentication, shopping functionality, and a complete admin portal for managing users, books, and site activities.</p>
-          <div class="proj-tags">
-            <span class="tag">PHP</span>
-            <span class="tag">HTML</span>
-            <span class="tag">MySQL</span>
-            <span class="tag">Full Stack</span>
-            <a href="https://github.com/tebogo226/my-first-project" target="_blank" rel="noopener" class="tag" style="color:var(--signal); border-color:var(--signal);">View Repo →</a>
-          </div>
+        <div class="proj-card reveal" style="border-color:var(--signal);">
+          <div class="proj-idx mono" style="color:var(--amber);">CYBERSECURITY / INTERNSHIP PREP</div>
+          <h3>SentryLog — Auth Log Analyzer</h3>
+          <p>Python tool that detects brute-force and credential-stuffing attacks in authentication logs using rolling time-window analysis. 14 passing tests, zero core dependencies, CLI with text/JSON/chart output.</p>
+          <div class="proj-tags"><span class="tag">Python</span><span class="tag">Security Analytics</span><span class="tag">pytest</span><span class="tag">add repo link</span></div>
         </div>
         <div class="proj-card reveal">
           <div class="proj-idx mono">PERSONAL PROJECT</div>
@@ -399,10 +381,8 @@
       <h2 class="display reveal">Let's build<br>something together.</h2>
       <div class="contact-links reveal">
         <a href="https://github.com/tebogo226" target="_blank" rel="noopener">→ github.com/tebogo226</a>
-        <a href="mailto:youremail@example.com">→ lekalakalatebogo72@gmail.com</a>
-        <a href="https://linkedin.com/in/your-linkedin" target="_blank" rel="noopener">→ linkedin.com/in/lekalakalatebogo</a>
-        <a href="tel:+27612345678">→ 074 624 2779</a>
-        <a href="tel:+27821234567">→ 073 252 5494</a>
+        <a href="mailto:youremail@example.com">→ youremail@example.com <span style="opacity:.5">(update this)</span></a>
+        <a href="https://linkedin.com/in/your-linkedin" target="_blank" rel="noopener">→ linkedin.com/in/your-linkedin <span style="opacity:.5">(add yours)</span></a>
       </div>
     </div>
   </section>
